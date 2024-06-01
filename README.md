@@ -1,169 +1,145 @@
-# ChatTTS webUI & API 
+# ChatTTS WebUI & API 
 
-一个简单的本地网页界面，直接在网页使用 [ChatTTS](https://github.com/2noise/chattts) 将文字合成为语音，同时支持对外提供API接口。
+A simple local web interface to use [ChatTTS](https://github.com/2noise/chattts) for text-to-speech synthesis directly on a webpage, and it also supports API integration.
 
-[Releases中可下载Windows整合包](https://github.com/jianchang512/ChatTTS-ui/releases)。
+[Download the Windows integrated package from the Releases](https://github.com/jianchang512/ChatTTS-ui/releases).
 
-
-
-> 界面预览
+> Interface Preview
 >
 > ![image](https://github.com/jianchang512/ChatTTS-ui/assets/3378335/6ed7c993-3882-4c34-9abd-f0635b133012)
 >
 
-
-试听合成语音效果
+Listen to the synthesized speech sample
 
 https://github.com/jianchang512/ChatTTS-ui/assets/3378335/03cf1c0f-0245-44b5-8007-370d9db2bda8
 
+## Pre-packaged Version for Windows
 
+1. Download the compressed package from the [Releases](https://github.com/jianchang512/chatTTS-ui/releases), unzip it, and double-click app.exe to use it.
 
+## Source Deployment on Linux
 
+1. Set up a python3.9+ environment.
+2. Create an empty directory `/data/chattts`, execute the command `cd /data/chattts && git clone https://github.com/jianchang512/chatTTS-ui .`.
+3. Create a virtual environment `python3 -m venv venv`.
+4. Activate the virtual environment `source ./venv/bin/activate`.
+5. Install dependencies `pip3 install -r requirements.txt`.
+6. If you do not need CUDA acceleration, execute `pip3 install torch torchaudio`.
 
+    If CUDA acceleration is needed, execute:
+    ```
+    pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118
+    pip install nvidia-cublas-cu11 nvidia-cudnn-cu11
+    ```
+    Additionally, install CUDA11.8+ ToolKit by searching for installation methods or refer to https://juejin.cn/post/7318704408727519270.
+    
+7. Execute `python3 app.py` to start the application, which will automatically open a browser window. The default address is `http://127.0.0.1:9966`.
 
+## Source Deployment on MacOS
 
-## Windows预打包版
-
-1. 从 [Releases](https://github.com/jianchang512/chatTTS-ui/releases)中下载压缩包，解压后双击 app.exe 即可使用
-
-
-## Linux 下源码部署
-
-1. 配置好 python3.9+环境
-2. 创建空目录 `/data/chattts` 执行命令 `cd /data/chattts &&  git clone https://github.com/jianchang512/chatTTS-ui .`
-3. 创建虚拟环境 `python3 -m venv venv`
-4. 激活虚拟环境 `source ./venv/bin/activate`
-5. 安装依赖 `pip3 install -r requirements.txt`
-6. 如果不需要CUDA加速，执行 `pip3 install torch torchaudio`
-
-	如果需要CUDA加速，执行 
-	```
-	pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118
-			
-	pip install nvidia-cublas-cu11 nvidia-cudnn-cu11
-		
-	```
-	另需安装 CUDA11.8+ ToolKit，请自行搜索安装方法 或参考 https://juejin.cn/post/7318704408727519270
-	
-7. 执行 `python3 app.py` 启动，将自动打开浏览器窗口，默认地址 `http://127.0.0.1:9966`
-
-
-## MacOS 下源码部署
-
-1. 配置好 python3.9+环境,安装git ，执行命令  `brew install git python@3.10`
-   继续执行
-
+1. Set up a python3.9+ environment and install git. Execute `brew install git python@3.10`.
+    Continue executing:
     ```
     export PATH="/usr/local/opt/python@3.10/bin:$PATH"
-
-    source ~/.bash_profile 
-	
-	source ~/.zshrc
-
+    source ~/.bash_profile
+    source ~/.zshrc
     ```
-	
-2. 创建空目录 `/data/chattts` 执行命令 `cd /data/chattts &&  git clone https://github.com/jianchang512/chatTTS-ui .`
-3. 创建虚拟环境 `python3 -m venv venv`
-4. 激活虚拟环境 `source ./venv/bin/activate`
-5. 安装依赖 `pip3 install -r requirements.txt`
-6. 安装torch `pip3 install torch torchaudio`
-7. 执行 `python3 app.py` 启动，将自动打开浏览器窗口，默认地址 `http://127.0.0.1:9966`
-8. Macos下可能会到一些问题，请查看 [常见问题与报错解决方法](faq.md)
+2. Create an empty directory `/data/chattts`, execute the command `cd /data/chattts && git clone https://github.com/jianchang512/chatTTS-ui .`.
+3. Create a virtual environment `python3 -m venv venv`.
+4. Activate the virtual environment `source ./venv/bin/activate`.
+5. Install dependencies `pip3 install -r requirements.txt`.
+6. Install torch `pip3 install torch torchaudio`.
+7. Execute `python3 app.py` to start the application, which will automatically open a browser window. The default address is `http://127.0.0.1:9966`.
+8. For issues on MacOS, please check the [FAQ](faq.md).
 
+## Source Deployment on Windows
 
-## Windows源码部署
+1. Download and install python3.9+, and ensure to select `Add Python to environment variables` during installation.
+2. Download and install git from https://github.com/git-for-windows/git/releases/download/v2.45.1.windows.1/Git-2.45.1-64-bit.exe.
+3. Create an empty folder `D:/chattts` and enter it. In the address bar, type `cmd` and press enter. In the opened cmd window, execute `git clone https://github.com/jianchang512/chatTTS-ui .`.
+4. Create a virtual environment by executing `python -m venv venv`.
+5. Activate the virtual environment by executing `.\venv\scripts\activate`.
+6. Install dependencies by executing `pip install -r requirements.txt`.
+7. If you do not need CUDA acceleration, execute `pip install torch torchaudio`.
 
-1. 下载python3.9+，安装时注意选中`Add Python to environment variables`
-2. 下载并安装git，https://github.com/git-for-windows/git/releases/download/v2.45.1.windows.1/Git-2.45.1-64-bit.exe 
-3. 创建空文件夹 `D:/chattts` 并进入，地址栏输入 `cmd`回车，在弹出的cmd窗口中执行命令 `git clone https://github.com/jianchang512/chatTTS-ui .`
-4. 创建虚拟环境，执行命令 `python -m venv venv`
-4. 激活虚拟环境，执行 `.\venv\scripts\activate`
-5. 安装依赖,执行 `pip install -r requirements.txt`
-6. 如果不需要CUDA加速，执行 `pip install torch torchaudio`
+    If CUDA acceleration is needed, execute:
+    `pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118`
+    
+    Additionally, install CUDA11.8+ ToolKit by searching for installation methods or refer to https://juejin.cn/post/7318704408727519270.
+    
+8. Execute `python app.py` to start the application, which will automatically open a browser window. The default address is `http://127.0.0.1:9966`.
 
-	如果需要CUDA加速，执行 
-	
-	`pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118`
-	
-	另需安装 CUDA11.8+ ToolKit，请自行搜索安装方法或参考 https://juejin.cn/post/7318704408727519270
-	
-7. 执行 `python app.py` 启动，将自动打开浏览器窗口，默认地址 `http://127.0.0.1:9966`
+## Notes for Source Deployment
 
+1. After starting the source deployment, it will first download the model from modelscope. However, modelscope lacks `spk_stat.pt` and will report an error. Download `spk_stat.pt` from https://huggingface.co/2Noise/ChatTTS/blob/main/asset/spk_stat.pt and copy it to the `project directory/models/pzc163/chatTTS/asset/` folder.
 
-## 源码部署注意
+2. Note that modelscope only allows model downloads from mainland China IP addresses. If you encounter proxy errors, disable the proxy. If you want to download the model from huggingface.co, open `app.py` and check the comments around lines 50-60.
 
-1. 源码部署启动后，会先从 modelscope下载模型，但modelscope缺少spk_stat.pt，会报错，请点击链接 https://huggingface.co/2Noise/ChatTTS/blob/main/asset/spk_stat.pt 下载 spk_stat.pt，将该文件复制到 `项目目录/models/pzc163/chatTTS/asset/ 文件夹内`
-
-2. 注意 modelscope 仅允许中国大陆ip下载模型，如果遇到 proxy 类错误，请关闭代理。如果你希望从 huggingface.co 下载模型，请打开 `app.py` 查看大约第50行-60行的注释。
-
-3. 如果需要GPU加速，必须是英伟达显卡，并且安装 cuda版本的torch。`pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118`
+3. If GPU acceleration is needed, you must have an NVIDIA graphics card and install the CUDA version of torch. `pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu118`.
 
 ```
-# 默认从 modelscope 下载模型,如果想从huggingface下载模型，请将以下3行注释掉
+# Download model from modelscope by default. To download from huggingface, comment out the following 3 lines:
 CHATTTS_DIR = snapshot_download('pzc163/chatTTS',cache_dir=MODEL_DIR)
 chat = ChatTTS.Chat()
 chat.load_models(source="local",local_path=CHATTTS_DIR)
 
-# 如果希望从 huggingface.co下载模型，将以下注释删掉。将上方3行内容注释掉
-#os.environ['HF_HUB_CACHE']=MODEL_DIR
-#os.environ['HF_ASSETS_CACHE']=MODEL_DIR
-#chat = ChatTTS.Chat()
-#chat.load_models()
-
+# To download from huggingface.co, uncomment the following lines and comment out the above 3 lines:
+# os.environ['HF_HUB_CACHE']=MODEL_DIR
+# os.environ['HF_ASSETS_CACHE']=MODEL_DIR
+# chat = ChatTTS.Chat()
+# chat.load_models()
 ```
 
+## [FAQ](faq.md)
 
-## [常见问题与报错解决方法](faq.md)
+## Modify HTTP Address
 
+The default address is `http://127.0.0.1:9966`. To modify it, open the `.env` file in the directory and change `WEB_ADDRESS=127.0.0.1:9966` to the appropriate IP and port, such as `WEB_ADDRESS=192.168.0.10:9966` for access within the local network.
 
-## 修改http地址
+## Using the API v0.5+
 
-默认地址是 `http://127.0.0.1:9966`,如果想修改，可打开目录下的 `.env`文件，将 `WEB_ADDRESS=127.0.0.1:9966`改为合适的ip和端口，比如修改为`WEB_ADDRESS=192.168.0.10:9966`以便局域网可访问
+**Request Method:** POST
 
-## 使用API请求 v0.5+
+**Request URL:** http://127.0.0.1:9966/tts
 
-**请求方法:** POST
+**Request Parameters:**
 
-**请求地址:** http://127.0.0.1:9966/tts
+- `text`: str | Required, text to synthesize.
+- `voice`: int | Optional, default 2222, determines the voice tone, can be 2222, 7869, 6653, 4099, 5099, or any value for a random voice tone.
+- `prompt`: str | Optional, default empty, set laughter, pauses, e.g., [oral_2][laugh_0][break_6].
+- `temperature`: float | Optional, default 0.3.
+- `top_p`: float | Optional, default 0.7.
+- `top_k`: int | Optional, default 20.
+- `skip_refine`: int | Optional, default 0, 1=skip refine text, 0=do not skip.
+- `custom_voice`: int | Optional, default 0, seed value for custom voice tone, greater than 0. If set, it takes precedence over `voice`.
 
-**请求参数:**
+**Response: JSON Data**
 
-text:	str| 必须， 要合成语音的文字
+Successful response:
+```
+{
+  code: 0,
+  msg: 'ok',
+  audio_files: [dict1, dict2]
+}
+```
+Where `audio_files` is an array of dictionaries, each element is a dictionary with `{filename: absolute path of the wav file, url: downloadable wav URL}`.
 
-voice:	int| 可选，默认 2222,  决定音色的数字， 2222 | 7869 | 6653 | 4099 | 5099，可选其一，或者任意传入将随机使用音色
-
-prompt:	str| 可选，默认 空， 设定 笑声、停顿，例如 [oral_2][laugh_0][break_6]
-
-temperature:	float| 可选，  默认 0.3
-
-top_p:	float|  可选， 默认 0.7
-
-top_k:	int|  可选， 默认 20
-
-skip_refine:	int|   可选， 默认0， 1=跳过 refine text，0=不跳过
-
-custom_voice:	int|  可选， 默认0，自定义获取音色值时的种子值，需要大于0的整数，如果设置了则以此为准，将忽略 `voice`
-
-
-**返回:json数据**
-
-成功返回:
-	{code:0,msg:ok,audio_files:[dict1,dict2]}
-	
-	其中 audio_files 是字典数组，每个元素dict为 {filename:wav文件绝对路径，url:可下载的wav网址}
-
-失败返回:
-
-	{code:1,msg:错误原因}
-
+Failed response:
+```
+{
+  code: 1,
+  msg: "error reason"
+}
 ```
 
-# API调用代码
+```python
+# API Call Code
 
 import requests
 
 res = requests.post('http://127.0.0.1:9966/tts', data={
-  "text": "若不懂无需填写",
+  "text": "If unsure, leave it blank",
   "prompt": "",
   "voice": "3333",
   "temperature": 0.3,
@@ -175,21 +151,29 @@ res = requests.post('http://127.0.0.1:9966/tts', data={
 print(res.json())
 
 #ok
-{code:0, msg:'ok', audio_files:[{filename: E:/python/chattts/static/wavs/20240601-22_12_12-c7456293f7b5e4dfd3ff83bbd884a23e.wav, url: http://127.0.0.1:9966/static/wavs/20240601-22_12_12-c7456293f7b5e4dfd3ff83bbd884a23e.wav}]}
+{
+  code: 0,
+  msg: 'ok',
+  audio_files: [{
+    filename: "E:/python/chattts/static/wavs/20240601-22_12_12-c7456293f7b5e4dfd3ff83bbd884a23e.wav",
+    url: "http://127.0.0.1:9966/static/wavs/20240601-22_12_12-c7456293f7b5e4dfd3ff83bbd884a23e.wav"
+  }]
+}
 
 #error
-{code:1, msg:"error"}
-
-
+{
+  code: 1,
+  msg: "error"
+}
 ```
 
+## Using in pyVideoTrans Software
 
-## 在pyVideoTrans软件中使用
+> Upgrade pyVideoTrans to 1.82+ https://github.com/jianchang512/pyvideotrans
 
-> 升级 pyVideoTrans 到 1.82+ https://github.com/jianchang512/pyvideotrans
+1. Click Menu - Settings - ChatTTS, fill in the request URL, which should be `http://127.0.0.1:9966` by default
 
-1. 点击菜单-设置-ChatTTS，填写请求地址，默认应该填写 http://127.0.0.1:9966
-2. 测试无问题后，在主界面中选择`ChatTTS`
+.
+2. After testing, select `ChatTTS` on the main interface.
 
 ![image](https://github.com/jianchang512/ChatTTS-ui/assets/3378335/7118325f-2b9a-46ce-a584-1d5c6dc8e2da)
-   
